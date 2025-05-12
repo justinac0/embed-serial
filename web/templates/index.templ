@@ -9,12 +9,14 @@ templ Index() {
 
         // terminal
         <div id="terminal" hx-ext="sse" sse-connect="/RxSSE">
-            <div sse-swap="message" hx-swap="beforeend"></div>
+            <div id="terminal-contents" sse-swap="message" hx-swap="beforeend"></div>
         </div>
 
-        <form onsubmit:hx-post="/send" hx-target="#terminal" hx-swap="outerHTML">
-            <input type="text" required/>
+        <form hx-post="/send" hx-swap="none">
+            <input type="text" name="message"/>
             <button type="submit">Send</button>
         </form>
+
+        <button hx-get="/clear" hx-swap="innerHTML" hx-target="#terminal-contents">Clear Output</button>
     }
 }

@@ -4,13 +4,13 @@ body {
 }
 
 #terminal {
-    margin: 1ch;
     padding: 1em;
     width: 80ch;
     height:40ch;
     background-color: black;
     color: white;
     font-weight: bold;
+
     overflow-y: scroll;
-    overflow-wrap: anywhere;
+    overflow-wrap:normal;
 }

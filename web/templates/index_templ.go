@@ -41,7 +41,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header><button hx-get=\"/scan\" hx-swap=\"outerHTML\" hx-target=\"#ports\">Scan Ports</button><div id=\"ports\"></div></header> <div id=\"terminal\" hx-ext=\"sse\" sse-connect=\"/RxSSE\"><div sse-swap=\"message\" hx-swap=\"beforeend\"></div></div><form onsubmit:hx-post=\"/send\" hx-target=\"#terminal\" hx-swap=\"outerHTML\"><input type=\"text\" required> <button type=\"submit\">Send</button></form>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header><button hx-get=\"/scan\" hx-swap=\"outerHTML\" hx-target=\"#ports\">Scan Ports</button><div id=\"ports\"></div></header> <div id=\"terminal\" hx-ext=\"sse\" sse-connect=\"/RxSSE\"><div id=\"terminal-contents\" sse-swap=\"message\" hx-swap=\"beforeend\"></div></div><form hx-post=\"/send\" hx-swap=\"none\"><input type=\"text\" name=\"message\"> <button type=\"submit\">Send</button></form><button hx-get=\"/clear\" hx-swap=\"innerHTML\" hx-target=\"#terminal-contents\">Clear Output</button>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
