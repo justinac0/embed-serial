@@ -1,0 +1,20 @@
+package templates
+
+templ Index() {
+    @BaseLayout() {
+        <header>
+            <button hx-get="/scan" hx-swap="outerHTML" hx-target="#ports">Scan Ports</button>
+            <div id="ports"></div>      
+        </header>
+
+        // terminal
+        <div id="terminal" hx-ext="sse" sse-connect="/RxSSE">
+            <div sse-swap="message" hx-swap="beforeend"></div>
+        </div>
+
+        <form onsubmit:hx-post="/send" hx-target="#terminal" hx-swap="outerHTML">
+            <input type="text" required/>
+            <button type="submit">Send</button>
+        </form>
+    }
+}
