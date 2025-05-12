@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"serialembed/web/templates"
+	"serialembed/web/templates/components"
 	"time"
 
 	"github.com/a-h/templ"
@@ -70,6 +71,18 @@ func setupEcho() {
 		return ctx.HTML(http.StatusOK, "<p>form posted</p>")
 	})
 
+	e.POST("/open", func(ctx echo.Context) error {
+		portName := ctx.QueryParam("port_name")
+
+		// DEBUG: just connect to the first one please
+		err := state.ConnectPort(portName)
+		if err != nil {
+			panic(err)
+		}
+
+		return ctx.NoContent(http.StatusOK)
+	})
+
 	e.GET("/RxSSE", func(ctx echo.Context) error {
 		ctx.Response().Header().Set("Content-Type", "text/event-stream")
 		ctx.Response().Header().Set("Cache-Control", "no-cache")
@@ -96,7 +109,7 @@ func setupEcho() {
 					event := fmt.Sprintf("event: %s\ndata: %v\n\n", "message", string(buffer))
 					ctx.Response().Write([]byte(event))
 					ctx.Response().Flush()
-					time.Sleep(time.Duration(n) * time.Millisecond)
+					time.Sleep(100 * time.Millisecond)
 				}
 			}
 		}()
@@ -119,13 +132,7 @@ func setupEcho() {
 			fmt.Printf("Found port: %v\n", port)
 		}
 
-		// DEBUG: just connect to the first one please
-		err = state.ConnectPort(ports[0])
-		if err != nil {
-			panic(err)
-		}
-
-		return ctx.HTML(http.StatusOK, fmt.Sprintf("<div id='ports'>%v</div>", ports))
+		return RenderTemplate(ctx, components.Ports(ports))
 	})
 
 	e.Logger.Fatal(e.Start("127.0.0.1:8000"))

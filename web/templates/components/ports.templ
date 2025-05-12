@@ -1,0 +1,11 @@
+package components
+
+import "fmt"
+
+templ Ports(names []string) {
+    <div id="ports">
+        for _, name := range(names) {
+            <p>{name}<button hx-post={fmt.Sprintf("/open?port_name=%s", name)} hx-swap="none">Open</button></p>
+        }
+    </div>
+}
