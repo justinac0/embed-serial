@@ -109,12 +109,12 @@ func setupHandlers(e *echo.Echo) {
 	// send: sends data to connected com port
 	e.POST("/send", func(ctx echo.Context) error {
 		message := ctx.FormValue("message")
+		message += "\r\n"
 
 		fmt.Printf("%v\n", []byte(message))
 
 		state.PortMutex.Lock()
 		fmt.Println("message: ", message)
-
 		n, err := state.CurrentPort.Write([]byte(message))
 		fmt.Println(n, err)
 		state.PortMutex.Unlock()
@@ -194,7 +194,7 @@ func setupHandlers(e *echo.Echo) {
 					ctx.Response().Flush()
 				}
 
-				time.Sleep(50 * time.Millisecond)
+				time.Sleep(100 * time.Millisecond)
 			}
 
 			fmt.Println("thread exit...")
