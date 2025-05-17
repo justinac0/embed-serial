@@ -1,16 +1,80 @@
 body {
-    margin: 1em;
-    padding: 0;
+    padding: 1em;
+    background-color: #252525;
+    color: azure;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+    color: aqua;
+}
+
+button {
+    background-color: white;
+    color: black;
+    padding: 1em;
+    border-radius: 0;
+    border: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+input {
+    background-color: lightgray;
+    color: black;
+    padding: 1em;
+    border-radius: 0;
+    border: 0;
+}
+
+input:focus {
+    background-color: lightblue;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
 
 #terminal {
-    padding: 1em;
-    width: 80ch;
-    height:40ch;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    width: 100%;
+    height: 60ch;
+    max-height: 160ch;
+
     background-color: black;
     color: white;
-    font-weight: bold;
+
+    border: 2px solid gray;
+    border-radius: 5px;
 
     overflow-y: scroll;
-    overflow-wrap:normal;
+    overflow-wrap: normal;
+
+    /* overflow-anchor: none; */
+}
+
+#terminal-contents {
+    font-size: large;
+    line-height: 2.5ch;
+    /* font-weight: bold; */
+    margin: 1ch;
+}
+
+#ports {
+    padding: 1em;
+    background-color: #444;
+}
+
+.special {
+    background-color: white;
+    color: black;
+    text-transform: uppercase;
 }

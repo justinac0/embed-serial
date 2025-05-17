@@ -1,0 +1,17 @@
+Firmware: @low
+    ☐ Message handling (start with ping/pong or something)
+
+Frontend:
+    ☐ Options to render as ascii/hex/other? @low
+    ☐ Port configuration per port, baud, mode, etc... @high
+    ☐ Render rw with different colors @low
+    ☐ Line numbers @low
+
+Backend:
+    ☐ Serial coms being in correct state event when page is refreshed @critical
+    ☐ Handle new-line characters to send as sse @high
+    ☐ Handle different render options @low
+    ☐ Port configuration backend code @low
+    ☐ Writting to connected device @high
+    ☐ Start/stop capture of incoming/outgoing messages @low
+    ☐ Fix wierd serial bugs when performing rx @critical

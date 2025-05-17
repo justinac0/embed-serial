@@ -1,3 +1,2 @@
 # !/bin/bash
-go tool templ generate
-go build cmd/app/main.go
+go tool templ generate && go run cmd/app/main.go

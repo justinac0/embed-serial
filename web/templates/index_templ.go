@@ -41,7 +41,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header><button hx-get=\"/scan\" hx-swap=\"outerHTML\" hx-target=\"#ports\">Scan Ports</button><div id=\"ports\"></div></header> <div id=\"terminal\" hx-ext=\"sse\" sse-connect=\"/RxSSE\"><div id=\"terminal-contents\" sse-swap=\"message\" hx-swap=\"beforeend\"></div></div><form hx-post=\"/send\" hx-swap=\"none\"><input type=\"text\" name=\"message\"> <button type=\"submit\">Send</button></form><button hx-get=\"/clear\" hx-swap=\"innerHTML\" hx-target=\"#terminal-contents\">Clear Output</button>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header><h1>serialembed</h1><p>by <a href=\"https://justinchappell.com\">justinac0</a></p></header><main><div id=\"terminal\" hx-ext=\"sse\" sse-connect=\"/RxSSE\"><div id=\"terminal-contents\" sse-swap=\"message\" hx-swap=\"beforeend\"></div></div><div style=\"display: flex; gap: 1em; justify-content: space-between;\"><form hx-post=\"/send\" hx-swap=\"none\"><input style=\"width: 64ch;\" type=\"text\" name=\"message\"> <button type=\"submit\">Send</button></form><div><button hx-get=\"/clear\" hx-swap=\"innerHTML\" hx-target=\"#terminal-contents\">Clear Output</button> <button hx-get=\"/scan\" hx-swap=\"outerHTML\" hx-target=\"#ports\">Scan Ports</button></div></div><br><div id=\"ports\"></div></main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
